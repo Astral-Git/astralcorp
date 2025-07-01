@@ -16,6 +16,9 @@ export default function HeroSection() {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative">
       <div ref={revealRef} className="text-center max-w-6xl mx-auto px-6 animate-breathing scroll-reveal">
+        <div className="text-sm md:text-base text-muted-foreground mb-4 animate-breathing">
+          Clean design. Thoughtful strategy. Real results.
+        </div>
         <div className="floating-element">
           <h1 className="text-6xl md:text-8xl font-bold space-font mb-6 leading-tight text-foreground">
             We build websites and{" "}

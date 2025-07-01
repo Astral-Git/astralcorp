@@ -4,28 +4,28 @@ const testimonials = [
   {
     id: 1,
     rating: 5,
-    content: "Apex Studio transformed our online presence completely. Their web design increased our customer engagement by 300% and sales conversions by 45%. Outstanding work!",
-    name: "Sarah Chen",
-    role: "CEO, TechFlow Solutions",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b332e234?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100",
+    content: "The website was clean, responsive, and delivered on time.",
+    name: "Arjun",
+    role: "Startup Founder",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100",
     delay: "0s"
   },
   {
     id: 2,
     rating: 5,
-    content: "The branding and logo design they created for our restaurant chain perfectly captured our vision. Professional, creative, and delivered beyond our expectations.",
-    name: "Marcus Rodriguez",
-    role: "Founder, Bella Vista Restaurants",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100",
+    content: "They perfectly captured the vibe of my brand through the logo.",
+    name: "Sneha",
+    role: "Designer",
+    image: "https://images.unsplash.com/photo-1494790108755-2616b332e234?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100",
     delay: "0.5s"
   },
   {
     id: 3,
     rating: 5,
-    content: "Working with Apex Studio was seamless. They built our e-commerce platform from scratch, and we've seen a 200% increase in online orders. Highly recommended!",
-    name: "Jennifer Walsh",
-    role: "Marketing Director, Urban Lifestyle",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100",
+    content: "Super smooth process from start to finish. Highly recommend.",
+    name: "Ravi",
+    role: "Business Owner",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100",
     delay: "1s"
   }
 ];

@@ -6,50 +6,50 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const portfolioItems = [
   {
     id: 1,
-    title: "TechFlow Solutions Website",
-    description: "Enterprise SaaS platform with 300% engagement boost",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    link: "#",
+    title: "E-commerce Website – Trendy",
+    description: "Modern UI/UX with seamless checkout experience.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    link: "Live Site →",
     delay: "0.5s"
   },
   {
     id: 2,
-    title: "Bella Vista Restaurant Chain",
-    description: "Complete brand identity and digital presence",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    link: "#",
+    title: "Logo Design – TechVerse",
+    description: "Minimal, tech-inspired identity for a startup.",
+    image: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    link: null,
     delay: "0.7s"
   },
   {
     id: 3,
-    title: "Urban Lifestyle E-commerce",
-    description: "Fashion retail platform with 200% sales increase",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    link: "#",
+    title: "Portfolio Site – Ria Sharma",
+    description: "Personal website with a custom content management system.",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    link: "Live Site →",
     delay: "0.9s"
   },
   {
     id: 4,
-    title: "FinanceFirst Logo & Branding",
-    description: "Financial services brand identity design",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    link: "#",
+    title: "Landing Page – TravelNow",
+    description: "Responsive one-pager optimized for mobile lead generation.",
+    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    link: null,
     delay: "1.1s"
   },
   {
     id: 5,
-    title: "HealthCare Analytics Dashboard",
-    description: "Medical data visualization platform",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    link: "#",
+    title: "Brand Identity – Creative Studio",
+    description: "Complete visual identity system with logo, colors, and typography.",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    link: null,
     delay: "1.3s"
   },
   {
     id: 6,
-    title: "Green Energy Corp Rebrand",
-    description: "Sustainable energy company visual identity",
-    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    link: "#",
+    title: "Web App – ProductFlow",
+    description: "Modern productivity tool with clean design and intuitive workflow.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    link: "Live Site →",
     delay: "1.5s"
   }
 ];
@@ -116,12 +116,14 @@ export default function WorkShowcase() {
                     <div className="p-6">
                       <h3 className="text-xl font-semibold mb-2 text-card-foreground">{item.title}</h3>
                       <p className="text-muted-foreground mb-4">{item.description}</p>
-                      <a
-                        href={item.link}
-                        className="text-primary hover:text-primary/80 transition-colors"
-                      >
-                        {item.title.includes("Logo") ? "View Case Study →" : "View Live →"}
-                      </a>
+                      {item.link && (
+                        <a
+                          href="#"
+                          className="text-primary hover:text-primary/80 transition-colors"
+                        >
+                          {item.link}
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -179,12 +181,14 @@ export default function WorkShowcase() {
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-card-foreground">{item.title}</h3>
                 <p className="text-muted-foreground mb-4">{item.description}</p>
-                <a
-                  href={item.link}
-                  className="text-primary hover:text-primary/80 transition-colors"
-                >
-                  {item.title.includes("Logo") ? "View Case Study →" : "View Live →"}
-                </a>
+                {item.link && (
+                  <a
+                    href="#"
+                    className="text-primary hover:text-primary/80 transition-colors"
+                  >
+                    {item.link}
+                  </a>
+                )}
               </div>
             </div>
           ))}

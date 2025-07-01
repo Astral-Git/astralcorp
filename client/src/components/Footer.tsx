@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
           
           <div className="text-muted-foreground">
-            © 2025 Apex Studio. All rights reserved.
+            © 2025 [Your Company Name]. All rights reserved.
           </div>
         </div>
       </div>

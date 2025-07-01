@@ -63,7 +63,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">Email</div>
-                    <div className="text-muted-foreground">hello@apexstudio.com</div>
+                    <div className="text-muted-foreground">your@email.com</div>
                   </div>
                 </div>
                 
@@ -73,7 +73,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">WhatsApp</div>
-                    <div className="text-muted-foreground">+1 (555) 123-4567</div>
+                    <div className="text-muted-foreground">+91-XXXXXXXXXX</div>
                   </div>
                 </div>
                 
@@ -83,7 +83,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">Social</div>
-                    <div className="text-muted-foreground">Instagram | Behance | GitHub</div>
+                    <div className="text-muted-foreground">[Instagram] [Behance] [GitHub]</div>
                   </div>
                 </div>
               </div>
