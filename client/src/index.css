@@ -59,6 +59,7 @@
     @apply font-sans antialiased bg-background text-foreground;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    color: hsl(var(--foreground));
   }
 }
 

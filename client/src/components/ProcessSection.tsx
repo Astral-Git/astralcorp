@@ -40,8 +40,8 @@ export default function ProcessSection() {
     <section id="process" className="py-20">
       <div className="max-w-4xl mx-auto px-6">
         <div ref={revealRef} className="text-center mb-16 scroll-reveal">
-          <h2 className="text-5xl md:text-6xl font-bold space-font mb-6">Our Process</h2>
-          <p className="text-xl text-gray-400">
+          <h2 className="text-5xl md:text-6xl font-bold space-font mb-6 text-foreground">Our Process</h2>
+          <p className="text-xl text-muted-foreground">
             How we transform ideas into exceptional digital experiences
           </p>
         </div>
@@ -53,7 +53,7 @@ export default function ProcessSection() {
                 <h3 className="text-2xl font-semibold mb-3 space-font">
                   {step.id}. {step.title}
                 </h3>
-                <p className="text-gray-300 text-lg leading-relaxed">
+                <p className="text-muted-foreground text-lg leading-relaxed">
                   {step.description}
                 </p>
               </div>

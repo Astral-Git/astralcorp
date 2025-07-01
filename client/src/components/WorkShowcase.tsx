@@ -1,54 +1,54 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useMagneticEffect } from "@/hooks/useMagneticEffect";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const portfolioItems = [
   {
     id: 1,
-    title: "E-commerce Website for Trendy",
-    description: "Modern e-commerce platform with seamless UX",
+    title: "TechFlow Solutions Website",
+    description: "Enterprise SaaS platform with 300% engagement boost",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
     link: "#",
     delay: "0.5s"
   },
   {
     id: 2,
-    title: "Creative Agency Portfolio",
-    description: "Bold design with interactive animations",
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    title: "Bella Vista Restaurant Chain",
+    description: "Complete brand identity and digital presence",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
     link: "#",
     delay: "0.7s"
   },
   {
     id: 3,
-    title: "Mobile Banking App",
-    description: "Intuitive financial app with clean UI",
-    image: "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    title: "Urban Lifestyle E-commerce",
+    description: "Fashion retail platform with 200% sales increase",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
     link: "#",
     delay: "0.9s"
   },
   {
     id: 4,
-    title: "Logo Design – TechVerse",
-    description: "Modern tech company brand identity",
-    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    title: "FinanceFirst Logo & Branding",
+    description: "Financial services brand identity design",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
     link: "#",
     delay: "1.1s"
   },
   {
     id: 5,
-    title: "Analytics Dashboard",
-    description: "Data visualization and user experience",
+    title: "HealthCare Analytics Dashboard",
+    description: "Medical data visualization platform",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
     link: "#",
     delay: "1.3s"
   },
   {
     id: 6,
-    title: "Complete Brand Identity",
-    description: "Comprehensive visual identity system",
-    image: "https://images.unsplash.com/photo-1558655146-364adaf1fcc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    title: "Green Energy Corp Rebrand",
+    description: "Sustainable energy company visual identity",
+    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
     link: "#",
     delay: "1.5s"
   }
@@ -59,6 +59,17 @@ export default function WorkShowcase() {
   const magneticRef = useMagneticEffect<HTMLButtonElement>();
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsToShow = 3;
+
+  // Auto-moving slider
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => 
+        prev + itemsToShow >= portfolioItems.length ? 0 : prev + 1
+      );
+    }, 4000); // Move every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => 
@@ -76,7 +87,7 @@ export default function WorkShowcase() {
     <section id="work" className="py-20 section-blur">
       <div className="max-w-7xl mx-auto px-6">
         <div ref={revealRef} className="text-center mb-16 scroll-reveal">
-          <h2 className="text-5xl md:text-6xl font-bold space-font mb-6 bg-foreground dark:bg-white text-background dark:text-black bg-clip-text text-transparent">Selected Work</h2>
+          <h2 className="text-5xl md:text-6xl font-bold space-font mb-6 text-foreground">Selected Work</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             A showcase of our recent projects in web development and visual design
           </p>

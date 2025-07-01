@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function ContactSection() {
   const revealRef = useScrollReveal();
-  const magneticRef = useMagneticEffect();
+  const magneticRef = useMagneticEffect<HTMLButtonElement>();
   const { toast } = useToast();
   
   const [formData, setFormData] = useState({
@@ -45,8 +45,8 @@ export default function ContactSection() {
     <section id="contact" className="py-20 section-blur">
       <div className="max-w-4xl mx-auto px-6">
         <div ref={revealRef} className="text-center mb-16 scroll-reveal">
-          <h2 className="text-5xl md:text-6xl font-bold space-font mb-6">Let's Work Together</h2>
-          <p className="text-xl text-gray-400">
+          <h2 className="text-5xl md:text-6xl font-bold space-font mb-6 text-foreground">Let's Work Together</h2>
+          <p className="text-xl text-muted-foreground">
             Tell us about your idea. We'll make it real.
           </p>
         </div>
@@ -55,15 +55,15 @@ export default function ContactSection() {
           {/* Contact Information */}
           <div ref={revealRef} className="space-y-8 scroll-reveal">
             <div className="animate-breathing">
-              <h3 className="text-2xl font-semibold mb-4 space-font">Get in Touch</h3>
+              <h3 className="text-2xl font-semibold mb-4 space-font text-foreground">Get in Touch</h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                     <span className="text-xl">📧</span>
                   </div>
                   <div>
-                    <div className="font-semibold">Email</div>
-                    <div className="text-gray-400">hello@apexstudio.com</div>
+                    <div className="font-semibold text-foreground">Email</div>
+                    <div className="text-muted-foreground">hello@apexstudio.com</div>
                   </div>
                 </div>
                 
@@ -72,8 +72,8 @@ export default function ContactSection() {
                     <span className="text-xl">📱</span>
                   </div>
                   <div>
-                    <div className="font-semibold">WhatsApp</div>
-                    <div className="text-gray-400">+1 (555) 123-4567</div>
+                    <div className="font-semibold text-foreground">WhatsApp</div>
+                    <div className="text-muted-foreground">+1 (555) 123-4567</div>
                   </div>
                 </div>
                 
@@ -82,8 +82,8 @@ export default function ContactSection() {
                     <span className="text-xl">🔗</span>
                   </div>
                   <div>
-                    <div className="font-semibold">Social</div>
-                    <div className="text-gray-400">Instagram | Behance | GitHub</div>
+                    <div className="font-semibold text-foreground">Social</div>
+                    <div className="text-muted-foreground">Instagram | Behance | GitHub</div>
                   </div>
                 </div>
               </div>

@@ -129,8 +129,19 @@ This is a modern, interactive portfolio website for a creative design studio cal
 - **Assets**: Bundled with the application
 
 ## Changelog
-- July 01, 2025. Initial setup
+- July 01, 2025. Initial setup with dark theme portfolio website
+- July 01, 2025. Added dark/light theme toggle with ThemeProvider
+- July 01, 2025. Created auto-moving gallery slider for work showcase
+- July 01, 2025. Fixed font visibility issues in light mode
+- July 01, 2025. Updated all content for business portfolio targeting web design clients
+- July 01, 2025. Enhanced particle background to work with both themes
+- July 01, 2025. Improved cursor animations with smoother transitions
 
 ## User Preferences
 
-Preferred communication style: Simple, everyday language.
+- Preferred communication style: Simple, everyday language
+- Wants stunning UI/UX design with blended seamless sections
+- Prefers particle background animations over glowing effects
+- Likes slower, calming breathing animations
+- Wants auto-moving gallery sliders for work showcase
+- Portfolio should target business clients seeking web design and graphic design services
