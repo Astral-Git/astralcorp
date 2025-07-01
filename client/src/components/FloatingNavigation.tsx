@@ -3,7 +3,7 @@ import { useMagneticEffect } from "@/hooks/useMagneticEffect";
 
 export default function FloatingNavigation() {
   const [activeSection, setActiveSection] = useState("home");
-  const magneticRef = useMagneticEffect();
+  const magneticRef = useMagneticEffect<HTMLButtonElement>();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,9 +33,9 @@ export default function FloatingNavigation() {
   };
 
   return (
-    <nav className="floating-nav fixed top-6 left-1/2 transform -translate-x-1/2 z-50 px-8 py-4 rounded-full animate-breathing">
+    <nav className="floating-nav fixed top-6 left-1/2 transform -translate-x-1/2 z-50 px-8 py-4 rounded-full animate-breathing backdrop-blur-md bg-background/80 dark:bg-black/80 border border-border">
       <div className="flex items-center space-x-8">
-        <div className="text-xl font-bold space-font tracking-wider">APEX</div>
+        <div className="text-xl font-bold space-font tracking-wider text-foreground">APEX</div>
         <div className="flex space-x-6">
           {[
             { id: "home", label: "Home" },
@@ -47,8 +47,8 @@ export default function FloatingNavigation() {
               key={item.id}
               ref={magneticRef}
               onClick={() => scrollToSection(item.id)}
-              className={`magnetic-element hover:text-blue-400 transition-colors ${
-                activeSection === item.id ? "text-blue-400" : ""
+              className={`magnetic-element hover:text-primary transition-colors text-foreground ${
+                activeSection === item.id ? "text-primary" : ""
               }`}
             >
               {item.label}

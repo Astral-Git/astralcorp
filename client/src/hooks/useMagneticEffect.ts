@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
-export function useMagneticEffect() {
-  const ref = useRef<HTMLElement>(null);
+export function useMagneticEffect<T extends HTMLElement = HTMLElement>() {
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     const element = ref.current;
