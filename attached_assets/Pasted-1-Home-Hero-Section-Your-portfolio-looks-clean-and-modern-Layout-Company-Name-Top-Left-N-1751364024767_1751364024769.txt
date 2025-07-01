@@ -1,0 +1,137 @@
+1️⃣ Home / Hero Section
+"Your portfolio looks clean and modern"
+
+Layout:
+
+Company Name (Top Left)
+
+Navigation Menu: Home | Work | Process | Contact (Top Right)
+
+Main Content (Center):
+
+Large Bold Heading:
+“We build websites and brands that make an impact.”
+
+Subheading (smaller):
+“A creative studio specializing in web development and visual identity design.”
+
+Buttons:
+View Portfolio | Start a Project
+
+Background: Clean white or light grey — or a soft gradient.
+
+2️⃣ Work Showcase
+"You show real/demo work samples"
+
+Section Title:
+“Selected Work”
+
+Layout:
+
+Grid layout with images
+
+Each tile has:
+
+Project name
+
+Description (1–2 lines)
+
+Live link (if available)
+
+Types of Work:
+
+Website screenshots (desktop & mobile views)
+
+Logo designs (simple grid of logos)
+
+ You can label them like:
+
+“E-commerce Website for Trendy”
+
+“Logo Design – TechVerse”
+
+3️⃣ Process / How We Work
+"I understand your working process"
+
+Section Title:
+“Our Process”
+
+Layout: Vertical Steps
+
+Step 1: Understand
+We begin by understanding your goals and requirements in detail.
+
+Step 2: Design
+We create initial designs or prototypes and get your feedback.
+
+Step 3: Build
+We develop the website or finalize the logo based on your feedback.
+
+Step 4: Review
+You review the final version and suggest last-minute tweaks.
+
+Step 5: Deliver
+We deliver the final files with complete documentation and support.
+
+4️⃣ Testimonials
+"You are serious, not time pass"
+
+Section Title:
+“What Our Clients Say”
+
+Layout: Card or carousel style
+
+Examples:
+
+“The website was clean, responsive, and delivered on time.”
+– Arjun, Startup Founder
+
+“They perfectly captured the vibe of my brand through the logo.”
+– Sneha, Designer
+
+ Keep just 2–3 short and genuine quotes.
+
+5️⃣ About / Credibility Section
+"You show you’re serious"
+
+Section Title:
+“Who We Are”
+
+Keep this short and impactful:
+
+Small team based in [Your City / Remote]
+
+Passionate about clean design and quality code
+
+We’ve worked with creators, startups, and businesses
+
+Every project is built from scratch, no templates
+
+Optional: Add your mission in one bold line:
+
+“We believe in designing with intent and building with purpose.”
+
+6️⃣ Contact Section
+"You are easy to contact"
+
+Section Title:
+“Let’s Work Together”
+
+Email address
+
+WhatsApp number (or clickable button)
+
+Instagram / Behance / GitHub
+
+Optional: Contact form with Name, Email, Message
+
+Add a short CTA line:
+
+“Tell us about your idea. We’ll make it real.”
+
+7️⃣ Footer
+Company name or logo
+
+Navigation: Home | Portfolio | Contact
+
+Copyright © 2025 [Company Name]
