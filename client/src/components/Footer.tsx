@@ -14,7 +14,7 @@ export default function Footer() {
     <footer className="py-12 border-t border-border">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-          <div className="text-2xl font-bold space-font text-foreground">APEX</div>
+          <div className="text-2xl font-bold space-font text-foreground">Astral Corp</div>
           
           <div className="flex space-x-8">
             <button
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
           
           <div className="text-muted-foreground">
-            © 2025 [Your Company Name]. All rights reserved.
+            © 2025 Astral Corp. All rights reserved.
           </div>
         </div>
       </div>
