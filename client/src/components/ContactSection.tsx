@@ -45,7 +45,7 @@ export default function ContactSection() {
     <section id="contact" className="py-20 section-blur">
       <div className="max-w-4xl mx-auto px-6">
         <div ref={revealRef} className="text-center mb-16 scroll-reveal">
-          <h2 className="text-5xl md:text-6xl font-bold space-font mb-6 text-foreground">Let's Work Together</h2>
+          <h2 className="text-5xl md:text-6xl font-bold space-font mb-6 text-foreground text-change">Let's Work Together</h2>
           <p className="text-xl text-muted-foreground">
             Tell us about your idea. We'll make it real.
           </p>
@@ -63,7 +63,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">Email</div>
-                    <div className="text-muted-foreground">your@email.com</div>
+                    <div className="text-muted-foreground">info.astralcorp@gmail.com</div>
                   </div>
                 </div>
                 
@@ -73,7 +73,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">WhatsApp</div>
-                    <div className="text-muted-foreground">+91-XXXXXXXXXX</div>
+                    <div className="text-muted-foreground">+91-7200021788</div>
                   </div>
                 </div>
                 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useMagneticEffect } from "@/hooks/useMagneticEffect";
+import logo from "./logo.png"; // ✅ Import the image as a module
 
 export default function FloatingNavigation() {
   const [activeSection, setActiveSection] = useState("home");
@@ -9,12 +10,15 @@ export default function FloatingNavigation() {
     const handleScroll = () => {
       const sections = ["home", "work", "process", "contact"];
       const scrollY = window.scrollY;
-      
-      sections.forEach(section => {
+
+      sections.forEach((section) => {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (scrollY >= offsetTop - 100 && scrollY < offsetTop + offsetHeight - 100) {
+          if (
+            scrollY >= offsetTop - 100 &&
+            scrollY < offsetTop + offsetHeight - 100
+          ) {
             setActiveSection(section);
           }
         }
@@ -33,8 +37,13 @@ export default function FloatingNavigation() {
   };
 
   return (
-    <nav className="floating-nav fixed top-6 left-6 z-50 px-6 py-3 rounded-full animate-breathing backdrop-blur-md bg-background/80 dark:bg-black/80 border border-border">
-      <div className="text-xl font-bold space-font tracking-wider text-foreground">APEX</div>
-    </nav>
+    <nav className="floating-nav fixed top-10 left-10 z-[100]  opacity-0 px-6 py-3 rounded-full animate-breathing backdrop-blur-md bg-background/80 dark:bg-black/80 border border-border">
+  <img
+    src={logo} // ✅ Using the imported logo image
+    alt="Logo"
+    className="w-12 h-10 object-contain"
+  />
+</nav>
+
   );
 }
