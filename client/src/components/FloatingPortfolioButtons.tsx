@@ -40,8 +40,8 @@ const FloatingPortfolioButtons = memo(() => {
       title: category.title,
       x: Math.random() * (rect.width - 150),
       y: Math.random() * (rect.height - 60),
-      vx: (Math.random() - 0.5) * 1.5,
-      vy: (Math.random() - 0.5) * 1.5,
+      vx: (Math.random() - 0.5) * 2,
+      vy: (Math.random() - 0.5) * 2,
       size: 120 + Math.random() * 30,
       color: category.color,
       element: null
@@ -88,13 +88,13 @@ const FloatingPortfolioButtons = memo(() => {
           let newVx = button.vx;
           let newVy = button.vy;
 
-          // Collision with walls
+          // Collision with walls - maintain energy for continuous movement
           if (newX <= 0 || newX >= rect.width - button.size) {
-            newVx = -newVx * 0.8; // Add damping
+            newVx = -newVx;
             newX = Math.max(0, Math.min(rect.width - button.size, newX));
           }
           if (newY <= 0 || newY >= rect.height - 60) {
-            newVy = -newVy * 0.8; // Add damping
+            newVy = -newVy;
             newY = Math.max(0, Math.min(rect.height - 60, newY));
           }
 
@@ -123,9 +123,10 @@ const FloatingPortfolioButtons = memo(() => {
             }
           });
 
-          // Apply slight friction
-          newVx *= 0.995;
-          newVy *= 0.995;
+          // Keep constant movement - no friction for continuous motion
+          // Ensure minimum velocity to keep moving
+          if (Math.abs(newVx) < 0.5) newVx = newVx < 0 ? -0.8 : 0.8;
+          if (Math.abs(newVy) < 0.5) newVy = newVy < 0 ? -0.8 : 0.8;
 
           // Update element position
           button.element.style.left = `${newX}px`;
@@ -181,8 +182,8 @@ const FloatingPortfolioButtons = memo(() => {
         <div 
           ref={containerRef}
           className="relative h-[500px] overflow-hidden rounded-2xl 
-            bg-gradient-to-br from-background to-muted/20 
-            border border-border/50"
+            bg-black/20 backdrop-blur-sm
+            border border-white/10"
           style={{ minHeight: '500px' }}
         />
       </div>
