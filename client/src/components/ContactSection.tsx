@@ -14,7 +14,9 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    phone: "",
+    address: "",
+    project: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -30,7 +32,7 @@ export default function ContactSection() {
       description: "We'll get back to you within 24 hours.",
     });
     
-    setFormData({ name: "", email: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", address: "", project: "" });
     setIsSubmitting(false);
   };
 
@@ -93,37 +95,68 @@ export default function ContactSection() {
           {/* Contact Form */}
           <div ref={revealRef} className="scroll-reveal">
             <form onSubmit={handleSubmit} className="space-y-6 animate-breathing" style={{ animationDelay: '0.5s' }}>
-              <div>
-                <Input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-gray-400"
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Full Name *</label>
+                  <Input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your full name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full p-4 bg-card border border-border rounded-xl focus:border-primary focus:outline-none transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Email Address *</label>
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="your.email@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full p-4 bg-card border border-border rounded-xl focus:border-primary focus:outline-none transition-colors"
+                  />
+                </div>
               </div>
-              <div>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-gray-400"
-                />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Phone Number</label>
+                  <Input
+                    type="tel"
+                    name="phone"
+                    placeholder="+1 (555) 123-4567"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full p-4 bg-card border border-border rounded-xl focus:border-primary focus:outline-none transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Location</label>
+                  <Input
+                    type="text"
+                    name="address"
+                    placeholder="City, Country"
+                    value={formData.address}
+                    onChange={handleChange}
+                    className="w-full p-4 bg-card border border-border rounded-xl focus:border-primary focus:outline-none transition-colors"
+                  />
+                </div>
               </div>
+
               <div>
+                <label className="block text-sm font-medium text-foreground mb-2">Tell us about your project *</label>
                 <Textarea
-                  name="message"
+                  name="project"
                   rows={6}
-                  placeholder="Tell us about your project..."
-                  value={formData.message}
+                  placeholder="Describe your project goals, timeline, budget range, and any specific requirements..."
+                  value={formData.project}
                   onChange={handleChange}
                   required
-                  className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-gray-400 resize-none"
+                  className="w-full p-4 bg-card border border-border rounded-xl focus:border-primary focus:outline-none transition-colors resize-none"
                 />
               </div>
               <Button

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, memo } from "react";
+import { useEffect, useRef, useState, memo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -27,6 +27,15 @@ const FloatingPortfolioButtons = memo(() => {
   const [buttons, setButtons] = useState<FloatingButton[]>([]);
   const animationRef = useRef<number>();
   const revealRef = useScrollReveal();
+  const lastUpdateRef = useRef<number>(0);
+
+  const handleCategoryClick = useCallback((category: string) => {
+    // Navigate to individual gallery page
+    console.log(`Opening ${category} gallery`);
+    // In a real app, you would use router navigation here
+    // For now, we'll simulate opening a gallery
+    alert(`Opening ${category} Gallery\n\nThis would navigate to a dedicated page showing all ${category} projects.`);
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -64,7 +73,7 @@ const FloatingPortfolioButtons = memo(() => {
       
       // Add click handler
       element.addEventListener('click', () => {
-        console.log(`Viewing ${button.title} portfolio`);
+        handleCategoryClick(button.title);
       });
       
       button.element = element;
@@ -73,22 +82,32 @@ const FloatingPortfolioButtons = memo(() => {
 
     setButtons(newButtons);
 
-    // Animation loop with collision detection
-    const animate = () => {
+    // Optimized animation loop with collision detection
+    const animate = (currentTime: number) => {
       if (!container) return;
+      
+      // Throttle to 60fps for better performance
+      if (currentTime - lastUpdateRef.current < 16) {
+        animationRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      lastUpdateRef.current = currentTime;
       
       const rect = container.getBoundingClientRect();
       
       setButtons(prevButtons => {
-        return prevButtons.map((button, i) => {
-          if (!button.element) return button;
+        const updatedButtons = [...prevButtons];
+        
+        // Update positions and handle wall collisions
+        updatedButtons.forEach((button, i) => {
+          if (!button.element) return;
 
           let newX = button.x + button.vx;
           let newY = button.y + button.vy;
           let newVx = button.vx;
           let newVy = button.vy;
 
-          // Collision with walls - maintain energy for continuous movement
+          // Wall collision detection
           if (newX <= 0 || newX >= rect.width - button.size) {
             newVx = -newVx;
             newX = Math.max(0, Math.min(rect.width - button.size, newX));
@@ -98,54 +117,67 @@ const FloatingPortfolioButtons = memo(() => {
             newY = Math.max(0, Math.min(rect.height - 60, newY));
           }
 
-          // Collision with other buttons
-          prevButtons.forEach((other, j) => {
-            if (i !== j && other.element) {
-              const dx = newX - other.x;
-              const dy = newY - other.y;
-              const distance = Math.sqrt(dx * dx + dy * dy);
-              const minDistance = (button.size + other.size) / 2 + 20;
-
-              if (distance < minDistance && distance > 0) {
-                // Calculate repulsion
-                const force = (minDistance - distance) / minDistance;
-                const repelX = (dx / distance) * force * 2;
-                const repelY = (dy / distance) * force * 2;
-                
-                newVx += repelX;
-                newVy += repelY;
-                
-                // Limit velocity
-                const maxVel = 3;
-                newVx = Math.max(-maxVel, Math.min(maxVel, newVx));
-                newVy = Math.max(-maxVel, Math.min(maxVel, newVy));
-              }
-            }
-          });
-
-          // Keep constant movement - no friction for continuous motion
-          // Ensure minimum velocity to keep moving
-          if (Math.abs(newVx) < 0.5) newVx = newVx < 0 ? -0.8 : 0.8;
-          if (Math.abs(newVy) < 0.5) newVy = newVy < 0 ? -0.8 : 0.8;
-
-          // Update element position
-          button.element.style.left = `${newX}px`;
-          button.element.style.top = `${newY}px`;
-
-          return {
-            ...button,
-            x: newX,
-            y: newY,
-            vx: newVx,
-            vy: newVy
-          };
+          // Update button data
+          updatedButtons[i] = { ...button, x: newX, y: newY, vx: newVx, vy: newVy };
         });
+
+        // Handle button-to-button collisions
+        for (let i = 0; i < updatedButtons.length; i++) {
+          for (let j = i + 1; j < updatedButtons.length; j++) {
+            const buttonA = updatedButtons[i];
+            const buttonB = updatedButtons[j];
+            
+            if (!buttonA.element || !buttonB.element) continue;
+
+            const dx = buttonA.x - buttonB.x;
+            const dy = buttonA.y - buttonB.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const minDistance = 140; // Minimum distance between button centers
+
+            if (distance < minDistance && distance > 0) {
+              // Calculate collision response
+              const overlap = minDistance - distance;
+              const separationX = (dx / distance) * overlap * 0.5;
+              const separationY = (dy / distance) * overlap * 0.5;
+
+              // Separate the buttons
+              updatedButtons[i].x += separationX;
+              updatedButtons[i].y += separationY;
+              updatedButtons[j].x -= separationX;
+              updatedButtons[j].y -= separationY;
+
+              // Exchange velocity components (elastic collision)
+              const tempVx = updatedButtons[i].vx;
+              const tempVy = updatedButtons[i].vy;
+              updatedButtons[i].vx = updatedButtons[j].vx;
+              updatedButtons[i].vy = updatedButtons[j].vy;
+              updatedButtons[j].vx = tempVx;
+              updatedButtons[j].vy = tempVy;
+            }
+          }
+        }
+
+        // Update DOM elements and ensure minimum velocity
+        updatedButtons.forEach(button => {
+          if (!button.element) return;
+          
+          // Ensure minimum velocity for continuous movement
+          if (Math.abs(button.vx) < 0.5) button.vx = button.vx < 0 ? -0.8 : 0.8;
+          if (Math.abs(button.vy) < 0.5) button.vy = button.vy < 0 ? -0.8 : 0.8;
+
+          // Update position with transform for better performance
+          button.element.style.transform = `translate(${button.x}px, ${button.y}px)`;
+          button.element.style.left = '0px';
+          button.element.style.top = '0px';
+        });
+
+        return updatedButtons;
       });
 
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
+    animate(0);
 
     return () => {
       if (animationRef.current) {
@@ -182,8 +214,7 @@ const FloatingPortfolioButtons = memo(() => {
         <div 
           ref={containerRef}
           className="relative h-[500px] overflow-hidden rounded-2xl 
-            bg-black/20 backdrop-blur-sm
-            border border-white/10"
+            bg-black/20 backdrop-blur-sm"
           style={{ minHeight: '500px' }}
         />
       </div>
