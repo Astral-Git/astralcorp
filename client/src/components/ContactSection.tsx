@@ -94,24 +94,11 @@ ${formData.project}
               <h3 className="text-3xl font-bold font-display mb-6 text-foreground">Get in Touch</h3>
               <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-8">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                    <span className="text-xl">📧</span>
-                  </div>
-                  <div className="text-left">
-                    <div className="font-semibold text-foreground">Email</div>
-                    <div className="text-muted-foreground">info.astralcorp@gmail.com</div>
-                  </div>
+                  
+                 
                 </div>
                 
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
-                    <span className="text-xl">📱</span>
-                  </div>
-                  <div className="text-left">
-                    <div className="font-semibold text-foreground">WhatsApp</div>
-                    <div className="text-muted-foreground">+91-7200021788</div>
-                  </div>
-                </div>
+               
               </div>
             </div>
 
