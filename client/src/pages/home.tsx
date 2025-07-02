@@ -3,8 +3,7 @@ import CustomCursor from "@/components/CustomCursor";
 import FloatingNavigation from "@/components/FloatingNavigation";
 import ThemeToggle from "@/components/ThemeToggle";
 import HeroSection from "@/components/HeroSection";
-import WorkShowcase from "@/components/WorkShowcase";
-import ProcessSection from "@/components/ProcessSection";
+import FloatingPortfolioButtons from "@/components/FloatingPortfolioButtons";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
@@ -20,8 +19,7 @@ export default function Home() {
       
       <div className="content-wrapper">
         <HeroSection />
-        <WorkShowcase />
-        <ProcessSection />
+        <FloatingPortfolioButtons />
         <TestimonialsSection />
         <AboutSection />
         <ContactSection />

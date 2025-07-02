@@ -8,7 +8,7 @@ export default function FloatingNavigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "work", "process", "contact"];
+      const sections = ["home", "work", "contact"];
       const scrollY = window.scrollY;
 
       sections.forEach((section) => {
