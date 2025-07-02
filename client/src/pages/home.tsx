@@ -1,7 +1,6 @@
 import ParticleBackground from "@/components/ParticleBackground";
 import CustomCursor from "@/components/CustomCursor";
 import FloatingNavigation from "@/components/FloatingNavigation";
-import ThemeToggle from "@/components/ThemeToggle";
 import HeroSection from "@/components/HeroSection";
 import FloatingPortfolioButtons from "@/components/FloatingPortfolioButtons";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -15,7 +14,6 @@ export default function Home() {
       <CustomCursor />
       <ParticleBackground />
       <FloatingNavigation />
-      <ThemeToggle />
       
       <div className="content-wrapper">
         <HeroSection />
