@@ -6,9 +6,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Inter', 'Source Sans Pro', 'sans-serif'],
-        'display': ['Crimson Text', 'serif'],
-        'body': ['Source Sans Pro', 'sans-serif'],
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['Crimson Text', 'Georgia', 'serif'],
+        'body': ['Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -10,7 +10,12 @@
     <meta name="description" content="Transform your brand with custom UI/UX design, web development, and graphic design services. Professional portfolio showcasing 50+ successful projects for startups and businesses worldwide." />
     <meta name="keywords" content="UI/UX design, graphic design, web design, branding, logo design, poster design, product design, portfolio, creative agency" />
     <meta name="author" content="Apex Studio" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="US" />
+    <meta name="geo.country" content="US" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -30,10 +35,15 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href="https://apex-studio.replit.app/" />
     
-    <!-- Fonts -->
+    <!-- Performance hints -->
+    <link rel="dns-prefetch" href="//images.unsplash.com">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    <!-- Optimized Fonts with preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Crimson+Text:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet"></noscript>
     
     <!-- Schema.org markup -->
     <script type="application/ld+json">
@@ -54,7 +64,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
   </body>
 </html>

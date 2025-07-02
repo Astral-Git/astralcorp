@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+/* Fonts loaded in HTML for better performance */
 
 @tailwind base;
 @tailwind components;
@@ -57,9 +57,39 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Inter', 'Source Sans Pro', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     overflow-x: hidden;
     color: hsl(var(--foreground));
+    font-display: swap;
+  }
+}
+
+/* Performance optimizations */
+* {
+  scroll-behavior: smooth;
+}
+
+img {
+  content-visibility: auto;
+}
+
+/* Critical path optimizations */
+.animate-breathing {
+  animation: breathing 4s ease-in-out infinite;
+  will-change: opacity;
+}
+
+.magnetic-element {
+  will-change: transform;
+}
+
+/* Reduce motion for performance */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -67,14 +97,12 @@
   font-family: 'Crimson Text', serif;
 }
 
-/* Breathing Animation - Slower */
+/* Optimized Breathing Animation */
 @keyframes breathing {
   0%, 100% { 
-    transform: scale(1); 
     opacity: 0.8; 
   }
   50% { 
-    transform: scale(1.01); 
     opacity: 1; 
   }
 }

@@ -48,9 +48,9 @@ const FloatingPortfolioButtons = memo(() => {
       title: category.title,
       x: Math.random() * (rect.width - 150),
       y: Math.random() * (rect.height - 60),
-      vx: (Math.random() - 0.5) * 2,
-      vy: (Math.random() - 0.5) * 2,
-      size: 120 + Math.random() * 30,
+      vx: (Math.random() - 0.5) * 1,
+      vy: (Math.random() - 0.5) * 1,
+      size: 120 + Math.random() * 20,
       color: category.color,
       element: null
     }));
@@ -85,8 +85,8 @@ const FloatingPortfolioButtons = memo(() => {
     const animate = (currentTime: number) => {
       if (!container) return;
       
-      // Throttle to 60fps for better performance
-      if (currentTime - lastUpdateRef.current < 16) {
+      // Throttle to 30fps for better performance
+      if (currentTime - lastUpdateRef.current < 33) {
         animationRef.current = requestAnimationFrame(animate);
         return;
       }

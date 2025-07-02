@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useAnimationFrame } from "framer-motion";
 
-const PARTICLE_COUNT = 40;
+const PARTICLE_COUNT = 20;
 const REPULSION_RADIUS = 100;
 const REPULSION_STRENGTH = 0.5;
 const PARTICLE_MIN_SIZE = 4;
