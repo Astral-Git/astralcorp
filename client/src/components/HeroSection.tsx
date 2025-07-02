@@ -18,14 +18,14 @@ export default function HeroSection() {
       <div ref={revealRef} className="text-center max-w-6xl mx-auto px-6 animate-breathing scroll-reveal">
        
         <div className="floating-element">
-          <h1 className="text-6xl md:text-8xl font-bold space-font mb-6 leading-tight text-foreground">
+          <h1 className="text-6xl md:text-8xl font-bold font-display mb-6 leading-tight text-foreground">
             We build websites and{" "}
             <span className="gradient-text">brands</span>{" "}
             that make an impact.
           </h1>
         </div>
         
-        <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed font-body">
           A creative studio specializing in web development and visual identity design.
         </p>
         

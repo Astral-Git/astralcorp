@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, memo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLocation } from "wouter";
 
 type FloatingButton = {
   id: number;
@@ -28,14 +29,12 @@ const FloatingPortfolioButtons = memo(() => {
   const animationRef = useRef<number>();
   const revealRef = useScrollReveal();
   const lastUpdateRef = useRef<number>(0);
+  const [, setLocation] = useLocation();
 
   const handleCategoryClick = useCallback((category: string) => {
-    // Navigate to individual gallery page
-    console.log(`Opening ${category} gallery`);
-    // In a real app, you would use router navigation here
-    // For now, we'll simulate opening a gallery
-    alert(`Opening ${category} Gallery\n\nThis would navigate to a dedicated page showing all ${category} projects.`);
-  }, []);
+    // Navigate to gallery page with category
+    setLocation(`/gallery?category=${encodeURIComponent(category)}`);
+  }, [setLocation]);
 
   useEffect(() => {
     if (!containerRef.current) return;

@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 export default function ContactSection() {
   const revealRef = useScrollReveal();
@@ -24,15 +25,46 @@ export default function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      // Send email using EmailJS (you'll need to set up EmailJS account)
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        project_details: formData.project,
+        to_email: "info.astralcorp@gmail.com"
+      };
+
+      // For now, create a mailto link as fallback
+      const subject = `New Project Inquiry from ${formData.name}`;
+      const body = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Location: ${formData.address}
+
+Project Details:
+${formData.project}
+      `;
+      
+      const mailtoLink = `mailto:info.astralcorp@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(mailtoLink, '_blank');
+      
+      toast({
+        title: "Email client opened!",
+        description: "Your default email app should open with the message pre-filled.",
+      });
+      
+      setFormData({ name: "", email: "", phone: "", address: "", project: "" });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    }
     
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "", address: "", project: "" });
     setIsSubmitting(false);
   };
 
@@ -45,59 +77,48 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-20 section-blur">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <div ref={revealRef} className="text-center mb-16 scroll-reveal">
-          <h2 className="text-5xl md:text-6xl font-bold space-font mb-6 text-foreground text-change">Let's Work Together</h2>
-          <p className="text-xl text-muted-foreground">
+          <h2 className="text-5xl md:text-6xl font-bold font-display mb-6 text-foreground">Let's Work Together</h2>
+          <p className="text-xl text-muted-foreground font-body">
             Tell us about your idea. We'll make it real.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div ref={revealRef} className="space-y-8 scroll-reveal">
-            <div className="animate-breathing">
-              <h3 className="text-2xl font-semibold mb-4 space-font text-foreground">Get in Touch</h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
+        {/* Centered Contact Form */}
+        <div className="max-w-4xl mx-auto">
+          <div ref={revealRef} className="scroll-reveal bg-card/50 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-border/20 shadow-2xl">
+            
+            {/* Contact Info Header */}
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-bold font-display mb-6 text-foreground">Get in Touch</h3>
+              <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-8">
+                <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                     <span className="text-xl">📧</span>
                   </div>
-                  <div>
+                  <div className="text-left">
                     <div className="font-semibold text-foreground">Email</div>
                     <div className="text-muted-foreground">info.astralcorp@gmail.com</div>
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
                     <span className="text-xl">📱</span>
                   </div>
-                  <div>
+                  <div className="text-left">
                     <div className="font-semibold text-foreground">WhatsApp</div>
                     <div className="text-muted-foreground">+91-7200021788</div>
                   </div>
                 </div>
-                
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                    <span className="text-xl">🔗</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Social</div>
-                    <div className="text-muted-foreground">[Instagram] [Behance] [GitHub]</div>
-                  </div>
-                </div>
               </div>
             </div>
-          </div>
-          
-          {/* Contact Form */}
-          <div ref={revealRef} className="scroll-reveal">
-            <form onSubmit={handleSubmit} className="space-y-6 animate-breathing" style={{ animationDelay: '0.5s' }}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <form onSubmit={handleSubmit} className="space-y-8 animate-breathing" style={{ animationDelay: '0.5s' }}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Full Name *</label>
+                  <label className="block text-lg font-medium text-foreground mb-3 font-body">Full Name *</label>
                   <Input
                     type="text"
                     name="name"
@@ -105,11 +126,11 @@ export default function ContactSection() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full p-4 bg-card border border-border rounded-xl focus:border-primary focus:outline-none transition-colors"
+                    className="w-full p-6 text-lg bg-card border-2 border-border rounded-2xl focus:border-primary focus:outline-none transition-colors font-body"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Email Address *</label>
+                  <label className="block text-lg font-medium text-foreground mb-3 font-body">Email Address *</label>
                   <Input
                     type="email"
                     name="email"
@@ -117,56 +138,59 @@ export default function ContactSection() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full p-4 bg-card border border-border rounded-xl focus:border-primary focus:outline-none transition-colors"
+                    className="w-full p-6 text-lg bg-card border-2 border-border rounded-2xl focus:border-primary focus:outline-none transition-colors font-body"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Phone Number</label>
+                  <label className="block text-lg font-medium text-foreground mb-3 font-body">Phone Number</label>
                   <Input
                     type="tel"
                     name="phone"
                     placeholder="+1 (555) 123-4567"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full p-4 bg-card border border-border rounded-xl focus:border-primary focus:outline-none transition-colors"
+                    className="w-full p-6 text-lg bg-card border-2 border-border rounded-2xl focus:border-primary focus:outline-none transition-colors font-body"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Location</label>
+                  <label className="block text-lg font-medium text-foreground mb-3 font-body">Location</label>
                   <Input
                     type="text"
                     name="address"
                     placeholder="City, Country"
                     value={formData.address}
                     onChange={handleChange}
-                    className="w-full p-4 bg-card border border-border rounded-xl focus:border-primary focus:outline-none transition-colors"
+                    className="w-full p-6 text-lg bg-card border-2 border-border rounded-2xl focus:border-primary focus:outline-none transition-colors font-body"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Tell us about your project *</label>
+                <label className="block text-lg font-medium text-foreground mb-3 font-body">Tell us about your project *</label>
                 <Textarea
                   name="project"
-                  rows={6}
+                  rows={8}
                   placeholder="Describe your project goals, timeline, budget range, and any specific requirements..."
                   value={formData.project}
                   onChange={handleChange}
                   required
-                  className="w-full p-4 bg-card border border-border rounded-xl focus:border-primary focus:outline-none transition-colors resize-none"
+                  className="w-full p-6 text-lg bg-card border-2 border-border rounded-2xl focus:border-primary focus:outline-none transition-colors resize-none font-body"
                 />
               </div>
-              <Button
-                ref={magneticRef}
-                type="submit"
-                disabled={isSubmitting}
-                className="magnetic-element w-full bg-blue-600 hover:bg-blue-500 p-4 rounded-xl font-semibold transition-all duration-300 animate-glow"
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
+              
+              <div className="pt-4">
+                <Button
+                  ref={magneticRef}
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="magnetic-element w-full bg-primary hover:bg-primary/90 p-6 rounded-2xl text-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl font-body"
+                >
+                  {isSubmitting ? "Opening Email Client..." : "Send Message"}
+                </Button>
+              </div>
             </form>
           </div>
         </div>
